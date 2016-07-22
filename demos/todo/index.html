@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>todo-demo</title>
+	<script src="./lib/react.js"></script>
+    <script src="./lib/react-dom.js"></script>
+    <script src="./lib/JSXTransformer.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+	<div id="todo_content">
+	</div>
+	<script type="text/jsx">
+		var Todo = React.createClass({
+			getInitialState: function() {
+        		return {content:[]};
+    		},
+			contentSubmit:function(newContent){
+				this.setState({
+					content:this.state.content.concat(newContent)
+				});
+			},
+			render:function(){
+				return (
+					<div> 
+						<TodoForm getContent={this.contentSubmit} />
+						<TodoContent content={this.state.content} />
+					</div>
+				)
+
+			}
+		});
+		var TodoForm = React.createClass({
+			handlerText:function(e){
+		        e.preventDefault();
+		        var content = this.refs.content.value;
+		        console.log(content);
+		        this.props.getContent(content);
+		        this.refs.content.value=null;
+			},
+			render:function(){
+				return (
+					<div>
+						<textarea name="content" placeholder="想说的..." ref="content"></textarea>
+					   <input type="button" value="发表" onClick={this.handlerText}/>
+					</div>
+					   )
+			}
+		});
+
+		var TodoContent = React.createClass({
+			render:function(){
+				return (<ul>{
+				this.props.content.map(function(each){
+					return <TodoList content={each} />;
+				})
+				}</ul>)
+
+			}
+		});
+
+		var TodoList = React.createClass({
+			delete:function(){
+				var node = this.refs.buttons.parentNode.parentNode;
+				console.log(node.parentNode.removeChild(node));
+			},
+			render:function(){
+				var nowTime = new Date();
+				return (
+					<li>
+						<div>
+							<img src="pic.jpg" width="50" height="50" />
+							<span>{nowTime.toLocaleString()}</span>
+						</div>
+						<div>
+							<span>{this.props.content}</span>
+						</div>
+						<div>
+							<input type="button" class="del_btn" ref="buttons" value="删除" onClick={this.delete} />
+						</div>
+					</li>
+				)
+			}
+		});
+
+		ReactDOM.render(
+			<Todo />,
+			document.getElementById("todo_content")
+		);
+	</script>
+</body>
+</html>

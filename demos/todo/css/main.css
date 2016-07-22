@@ -1,0 +1,63 @@
+body{
+	margin:0;
+	padding:0;
+	height: 1000px;
+
+}
+
+#todo_content{
+	margin:0 auto;
+	width:1000px;
+}
+
+textarea{
+	resize:none;
+	width:50%;
+	height:100px;
+	margin:20px 25%;
+	font-family:"黑体";
+	font-size: 16px;
+}
+
+input[type=button]{
+	margin-left: 65%;
+	width: 100px;
+	height:45px;
+	border:none;
+	border-radius: 2px;
+	background-color: orange;
+	font-family:"黑体";
+	font-size: 16px;
+	color:#f0f0f0;
+}
+
+input[type=button]:focus{outline:0;}
+
+ul{
+	list-style:none;
+	margin-left:25%;
+	width: 40%;
+}
+
+li{
+	margin-top: 10px;
+	border: 1px solid #DFDADA;
+	background-color: #DFDADA;
+}
+
+span{
+	font-family:"黑体";
+	font-size: 16px;
+}
+
+.del_btn{
+
+	width: 70px;
+	height:30px;
+	border:none;
+	border-radius: 2px;
+	background-color: #DFDADA;
+	font-family:"黑体";
+	font-size: 16px;
+	color:#f0f0f0;
+}
