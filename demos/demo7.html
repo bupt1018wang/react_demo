@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>demo4</title>
+		<script src="./lib/react.js"></script>
+    	<script src="./lib/react-dom.js"></script>
+    	<script src="./lib/JSXTransformer.js"></script>
+	</head>
+	<body>
+		<h1 style="border-bottom:3px solid">demo5:动态组件简单实例</h1>
+		<div id="dynamic_comp"></div>
+		<script type="text/jsx">
+			var myDate = new Date();
+			var Time = React.createClass({
+
+				getInitialState: function() {
+    				return {nowTime:myDate.toLocaleString( )};
+  				},
+  				update:function(){
+  					myDate = new Date();
+  					this.setState({nowTime:myDate.toLocaleString( )});
+  				},
+  				componentDidMount: function() {
+    				this.interval = setInterval(this.update, 1000);
+  				},
+				render:function(){
+					return <h1>当前时间：{this.state.nowTime}</h1>;
+				}
+			});
+
+			ReactDOM.render(
+				<Time />,
+				document.getElementById("dynamic_comp")
+			);
+		</script>
+	</body>
+</html>

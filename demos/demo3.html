@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>demo3</title>
+		<script src="./lib/react.js"></script>
+    	<script src="./lib/react-dom.js"></script>
+    	<script src="./lib/JSXTransformer.js"></script>
+	</head>
+	<body>
+		<h1 style="border-bottom:3px solid">demo3:组件</h1>
+		<!--一个简单的组件，注：组件的第一个字母必须是大写-->
+		<div id="component"></div>
+		<script type="text/jsx">
+			var myDate = new Date();
+			var NowTime = React.createClass({
+				render:function(){
+					return <h1>hello,{myDate.toLocaleString( )}</h1>;
+				}
+			});
+
+			ReactDOM.render(
+				<NowTime />,
+				document.getElementById("component")
+			);
+		</script>
+	</body>
+</html>

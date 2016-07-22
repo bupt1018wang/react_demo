@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>demo2</title>
+			<script src="./lib/react.js"></script>
+    	<script src="./lib/react-dom.js"></script>
+    	<script src="./lib/JSXTransformer.js"></script>
+	</head>
+	<body>
+		<h1 style="border-bottom:3px solid">demo2:jsx中插入js变量</h1>
+		<!--在jsx语法中插入js，利用{}，与angularJs相似-->
+		<div id="name"></div>
+		<script type="text/jsx">
+			var namelist = ["tom","jerry","mary"];
+
+			ReactDOM.render(
+				<ul>
+				{
+					namelist.map(function(name){
+						return <li>hello,{name}</li>
+					})
+				}
+				</ul>,
+				document.getElementById("name")
+			);
+		</script>
+	</body>
+</html>

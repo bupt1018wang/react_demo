@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>demo4</title>
+		<script src="./lib/react.js"></script>
+    	<script src="./lib/react-dom.js"></script>
+    	<script src="./lib/JSXTransformer.js"></script>
+	</head>
+	<body>
+		<h1 style="border-bottom:3px solid">demo5:组件的props.children</h1>
+		<!--需要注意props.children的值可能为undefined（没有）、object（一个子节点）、array（多个子节点）-->
+		<div id="comp"></div>
+		<script type="text/jsx">
+			var Person = React.createClass({
+				render:function(){
+					return <ul>
+					{
+						React.Children.map(this.props.children,function(children){
+							return <li>{children}</li>;
+						})
+					}
+					</ul>;
+					
+				}
+			});
+
+			ReactDOM.render(
+				<Person>
+					<div>Tom</div>
+					<div>Jerry</div>
+				</Person>
+				,
+				document.getElementById("comp")
+			);
+		</script>
+	</body>
+</html>

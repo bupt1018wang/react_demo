@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>demo4</title>
+		<script src="./lib/react.js"></script>
+    	<script src="./lib/react-dom.js"></script>
+    	<script src="./lib/JSXTransformer.js"></script>
+	</head>
+	<body>
+		<h1 style="border-bottom:3px solid">demo8:表单组件</h1>
+		<div id="comp"></div>
+		<script type="text/jsx">
+			var Input = React.createClass({
+ 			getInitialState: function() {
+    		return {value:"1"};
+  			},
+  			handleChange: function(event) {
+    			this.setState({value: event.target.value});
+  			},
+  			render: function () {
+    			var value = this.state.value;
+    			return (
+      			<div>
+        			<select onChange={this.handleChange}>
+        				<option value = "1">1</option>
+        				<option value = "2">2</option>
+        			</select>
+        			<p>{value}</p>
+      			</div>
+    			);
+  			}
+			});
+			ReactDOM.render(
+				<Input />,
+				document.getElementById("comp")
+			);
+		</script>
+	</body>
+</html>

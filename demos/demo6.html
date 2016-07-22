@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>demo4</title>
+		<script src="./lib/react.js"></script>
+    	<script src="./lib/react-dom.js"></script>
+    	<script src="./lib/JSXTransformer.js"></script>
+	</head>
+	<body>
+		<h1 style="border-bottom:3px solid">demo6:组件的propTypes</h1>
+		<div id="comp"></div>
+		<script type="text/jsx">
+			var Person = React.createClass({
+				getDefaultProps:function(){
+						return {name:"Jerry"};
+					}
+				,
+				propTypes:{
+					name:React.PropTypes.string.isRequired
+				},
+
+				render:function(){
+					return <h1>{this.props.name}</h1>;
+				}
+			});
+
+			ReactDOM.render(
+				<Person name="Tom"/>,
+				document.getElementById("comp")
+			);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>demo4</title>
+		<script src="./lib/react.js"></script>
+    	<script src="./lib/react-dom.js"></script>
+    	<script src="./lib/JSXTransformer.js"></script>
+	</head>
+	<body>
+		<h1 style="border-bottom:3px solid">demo9:子-父组件通信</h1>
+		<div id="comp"></div>
+		<script type="text/jsx">
+      var GroceryList = React.createClass({
+        handleClick: function(i) {
+          console.log('You clicked: ' + this.props.items[i]);
+        },
+
+        render: function() {
+          return (
+            <div>
+              {this.props.items.map(function(item, i) {
+                return (
+                  <div onClick={this.handleClick.bind(this, i)} key={i}>{item}</div>
+                );
+              }, this)}
+            </div>
+          );
+        }
+      });
+
+      ReactDOM.render(
+        <GroceryList items={['Apple', 'Banana', 'Cranberry']} />, 
+        document.getElementById("comp")
+      );
+		</script>
+	</body>
+</html>
